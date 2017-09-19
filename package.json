@@ -1,0 +1,29 @@
+{
+  "name": "useless-telegram-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-watch": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viattik/javascript-tonight-contest.git"
+  },
+  "author": "Andrei Sierkov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viattik/javascript-tonight-contest/issues"
+  },
+  "homepage": "https://github.com/viattik/javascript-tonight-contest#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "node-telegram-bot-api": "^0.28.0",
+    "pg": "^7.3.0"
+  },
+  "engines": {
+    "node": "6.9.3",
+    "npm": "4.0.5"
+  }
+}
