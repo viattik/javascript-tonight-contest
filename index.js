@@ -29,13 +29,26 @@ const dbConfig = ENV === 'development'
 const client = new Client(dbConfig);
 
 app.get('/', function (req, res) {
-  client.connect().then(() => {
-    client.query('SELECT * FROM winners WHERE TRUE').then((response) => {
-      res.send('DB test success');
-      res.send(JSON.stringify(response));
+  console.log('Trying to connect DB...');
+  res.send(JSON.stringify(dbConfig || {}));
+  client.connect()
+    .then(() => {
+      console.log('Connected successfully');
+      client.query('SELECT * FROM winners WHERE TRUE')
+        .then((response) => {
+          res.send('DB test success');
+          res.send(JSON.stringify(response));
+          client.end();
+        })
+        .catch(() => {
+          console.log('select fail');
+          client.end();
+        });
+    })
+    .catch(() => {
+      console.log('connection fail');
       client.end();
     });
-  });
 });
 
 app.listen(app.get('port'), function () {
