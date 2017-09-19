@@ -9,7 +9,7 @@ app.set('port', (process.env.PORT || 5000));
 const ENV = process.env.TELEGRAM_CONTEST_ENV || 'development';
 
 app.get('/', function (req, res) {
-  res.send(process.env.TELEGRAM_CONTEST_TOKEN);
+  res.send('Nothing is here');
   res.end();
 });
 
@@ -47,5 +47,5 @@ const TBot = require('node-telegram-bot-api');
 const telegram = new TBot(process.env.TELEGRAM_CONTEST_TOKEN, { polling: true });
 
 telegram.on('text', (message) => {
-  console.log(message);
+  telegram.sendMessage(message.chat.id, 'test');
 });
