@@ -24,22 +24,11 @@ const client = new Client({
 });
 
 app.get('/', function (req, res) {
-  client.connect()
-    .then(() => {
-      client.query('SELECT * FROM winners WHERE TRUE')
-        .then((response) => {
-          res.send(JSON.stringify(response));
-          client.end();
-        })
-        .catch(() => {
-          res.send('select fail');
-          client.end();
-        });
-    })
-    .catch(() => {
-      res.send('connection fail');
-      client.end();
+  client.connect().then(() => {
+    client.query('SELECT * FROM winners WHERE TRUE').then((response) => {
+      console.log(JSON.stringify(response));
     });
+  });
 });
 
 app.listen(app.get('port'), function () {
