@@ -14,16 +14,20 @@ const TBot = require('node-telegram-bot-api');
 // });
 
 const { Client } = require('pg');
-const client = new Client({
-  host: process.env.TELEGRAM_CONTEST_DB_HOST,
-  database: process.env.TELEGRAM_CONTEST_DB_DATABASE,
-  user: process.env.TELEGRAM_CONTEST_DB_USER,
-  password: process.env.TELEGRAM_CONTEST_DB_PASSWORD,
-  port: '5432',
-  ssl: true,
-});
+function connectToDb() {
+  const client = new Client({
+    host: process.env.TELEGRAM_CONTEST_DB_HOST,
+    database: process.env.TELEGRAM_CONTEST_DB_DATABASE,
+    user: process.env.TELEGRAM_CONTEST_DB_USER,
+    password: process.env.TELEGRAM_CONTEST_DB_PASSWORD,
+    port: '5432',
+    ssl: true,
+  });
+  return client;
+}
 
 app.get('/', function (req, res) {
+  const client = connectToDb();
   client.connect().then(() => {
     client.query('SELECT * FROM winners WHERE TRUE').then((response) => {
       console.log(JSON.stringify(response));
@@ -35,8 +39,9 @@ app.listen(app.get('port'), function () {
   console.log('Contest app is running on port', app.get('port'));
 });
 
-client.connect().then(() => {
-  client.query('SELECT * FROM winners WHERE TRUE').then((response) => {
+connectToDb().then(() => {
+  const client = connectToDb();
+  client.connect().query('SELECT * FROM winners WHERE TRUE').then((response) => {
     console.log('select success');
   });
   client.query({
