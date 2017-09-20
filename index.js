@@ -30,7 +30,7 @@ app.get('/', function (req, res) {
   const client = connectToDb();
   client.connect().then(() => {
     client.query('SELECT * FROM winners WHERE TRUE').then((response) => {
-      console.log(JSON.stringify(response));
+      res.send(JSON.stringify(response));
     });
   });
 });
@@ -53,3 +53,5 @@ function testDB() {
     });
   });
 }
+
+testDB();
