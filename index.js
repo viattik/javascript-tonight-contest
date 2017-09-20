@@ -29,11 +29,11 @@ const dbConfig = ENV === 'development'
 const client = new Client(dbConfig);
 
 app.get('/', function (req, res) {
-  console.log('Trying to connect DB...');
+  res.send('Trying to connect DB...');
   res.send(JSON.stringify(dbConfig || {}));
   client.connect()
     .then(() => {
-      console.log('Connected successfully');
+      res.send('Connected successfully');
       client.query('SELECT * FROM winners WHERE TRUE')
         .then((response) => {
           res.send('DB test success');
@@ -41,12 +41,12 @@ app.get('/', function (req, res) {
           client.end();
         })
         .catch(() => {
-          console.log('select fail');
+          res.send('select fail');
           client.end();
         });
     })
     .catch(() => {
-      console.log('connection fail');
+      res.send('connection fail');
       client.end();
     });
 });
