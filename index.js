@@ -29,8 +29,6 @@ const dbConfig = ENV === 'development'
 const client = new Client(dbConfig);
 
 app.get('/', function (req, res) {
-  res.send('Trying to connect DB...');
-  res.send(JSON.stringify(dbConfig || {}));
   client.connect()
     .then(() => {
       res.send('Connected successfully');
