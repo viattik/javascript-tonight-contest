@@ -39,15 +39,17 @@ app.listen(app.get('port'), function () {
   console.log('Contest app is running on port', app.get('port'));
 });
 
-connectToDb().then(() => {
+function testDB() {
   const client = connectToDb();
-  client.connect().query('SELECT * FROM winners WHERE TRUE').then((response) => {
-    console.log('select success');
+  client.connect().then(() => {
+    client.query('SELECT * FROM winners WHERE TRUE').then((response) => {
+      console.log('select success');
+    });
+    client.query({
+      text: 'INSERT INTO winners(name, email) VALUES($1, $2)',
+      values: ['brianc', 'brian.m.carlson@gmail.com'],
+    }).then(() => {
+      client.end();
+    });
   });
-  client.query({
-    text: 'INSERT INTO winners(name, email) VALUES($1, $2)',
-    values: ['brianc', 'brian.m.carlson@gmail.com'],
-  }).then(() => {
-    client.end();
-  });
-});
+}
