@@ -1,8 +1,8 @@
 module.exports.questions = [
   {
     text: `Hi. You will need to answer 3 JS-related questions.
-They may be frustrating a little bit, but give it a shot.
-Here is the first one:
+They may be frustrating a little bit, but give it a shot. 🤓
+1️⃣ Here is the first one:
 \`\`\`
 const a = [,,,]; 
 a.toString(); // - ?
@@ -14,7 +14,7 @@ a.toString(); // - ?
     ]
   },
   {
-    text: `What about this one?
+    text: `2️⃣ What about this one? 🤔
 \`\`\`
 444 + '333' - true
 \`\`\``,
@@ -25,7 +25,7 @@ a.toString(); // - ?
     ]
   },
   {
-    text: `And the last one:
+    text: `3️⃣ And the last one: 🍌
 \`\`\`
 'b' + 'a' + + 'a' + 'a'
 \`\`\``,

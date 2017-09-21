@@ -32,7 +32,7 @@ function getReply(id) {
     return {
       reply: `Thank you for participation.
 The winner will be defined after the last talk.
-And we also remind you that there will be an after-party, so it worth waiting.`,
+And we also remind you that there will be an after-party, so it worth waiting. 😉`,
       form: { parse_mode: 'Markdown' },
     };
   }
