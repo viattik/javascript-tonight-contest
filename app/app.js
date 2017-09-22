@@ -31,8 +31,8 @@ function getReply(id) {
   if (answers.length === 3) {
     return {
       reply: `Thank you for participation.
-The winner will be defined after the last talk.
-And we also remind you that there will be an after-party, so it worth waiting. 😉`,
+The winner will be chosen after the last talk.
+And we also remind you that there's going to be an after-party, so it's worth waiting. 😉`,
       form: { parse_mode: 'Markdown' },
     };
   }

@@ -1,7 +1,7 @@
 module.exports.questions = [
   {
     text: `Hi. You will need to answer 3 JS-related questions.
-They may be frustrating a little bit, but give it a shot. 🤓
+They may frustrate you a little bit, but give it a shot. 🤓
 1️⃣ Here is the first one:
 \`\`\`
 const a = [,,,]; 
